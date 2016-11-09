@@ -1,0 +1,4 @@
+zrobione w stukturze Symfony
+jesli chodzi o zadani to rozumiem ze chodzi o zwykly ACL?
+urzytkownicy o przypisanych danych rolach maja dostep do poszczegolnych zasobow
+zrobione 2 metody dla zarzadzania rolami uzytkownikow

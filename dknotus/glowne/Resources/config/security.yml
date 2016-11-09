@@ -1,0 +1,28 @@
+#nasz ACL
+security:
+    #przyklady roznych rol
+    role_hierarchy:
+        ROLE_USER_FRANCZYZA:		  ROLE_USER
+        ROLE_USER_WLASNY:	          ROLE_USER
+        ROLE_SPRZEDAWCA_FRANCZYZA:    ROLE_USER_FRANCZYZA
+        ROLE_SPRZEDAWCA_WLASNY:       ROLE_USER_WLASNY
+        ROLE_KIEROWNIK_FRANCZYZA:     ROLE_SPRZEDAWCA_FRANCZYZA
+        ROLE_KIEROWNIK_WLASNY:        ROLE_SPRZEDAWCA_WLASNY
+        ROLE_SZEF_WSZYSTKICH_SZEFOW:  [ROLE_KIEROWNIK_FRANCZYZA, ROLE_KIEROWNIK_WLASNY]
+        #itd
+
+    ##
+
+    #rozne zasoby z filtrowaniem po ralach
+    #przyklady
+    access_control:
+        - { path: ^/dane-klientow, roles: ROLE_USER_WLASNY }
+        - { path: ^/dane-franczyzy, roles: ROLE_USER_FRANCZYZA }
+        - { path: ^/dane-sprzedazy, roles: ROLE_SPRZEDAWCA_FRANCZYZA }
+        - { path: ^/dane-partnerow-biznesowych, roles: ROLE_SPRZEDAWCA_FRANCZYZA }
+
+        #np szef (albo admin) beda mieli mieli dostep do panelu ze zmiana rol uzytkownikow
+        - { path: ^/szef, roles: ROLE_SZEF_WSZYSTKICH_SZEFOW }
+
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #itd

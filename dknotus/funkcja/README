@@ -1,0 +1,2 @@
+jesli mamy pominac przyisanie do innej zmiennej, to mozna przefiltrowac tablice i unsetowac liczby niepodzielne przez 3,
+a nastepnie zwrocic dana tablice
