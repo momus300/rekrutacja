@@ -48,13 +48,12 @@ class PoprawionyKod
 
     private function removeTextKey()
     {
-        foreach ($this->data as $key => $d) {
+        foreach (array_keys($this->data) as $key) {
             if (strpos($key, '_text') || strpos($key, '_external')) {
                 unset($this->data->{$key});
             }
         }
     }
-
 
     private function storageHandling()
     {
@@ -110,7 +109,7 @@ class PoprawionyKod
         /*chyba powinien przekazywac tablice, a nie obiekt, wiec dodane rzutowanie*/
         $this->dbUpdate((array)$this->data);
         /*tutaj nic nie logujemy?
-        jesli tak to mozna saveLog przeniesc do metody dbUpdate*/
+        jesli logujemy to mozna saveLog przeniesc do metody dbUpdate*/
     }
 
     /**
